@@ -27,14 +27,24 @@ function showTodos() {
     let todo = JSON.parse(localStorage.getItem('list'));
     todo.forEach((element, i) => {
         listGroupTodo.innerHTML += `
-    <li onclick="setComplited(${i})" class=" list-group-item d-flex  align-items-start justify-content-between ${element.completed == true ? 'completed' : ''}">
-        ${element.text}
-        <div id="todo-icon">
-          <span class="opacity-25  ">${element.time}</span>
-          <img class="ms-2" onclick="editTodo(${i})"  src="./img/edit.svg" alt="edit icon" width="25" height="25" data-bs-toggle="modal" data-bs-target="#exampleModal">
-          <img src="./img/delete.svg" onclick="deleteTodo(${i})" alt="delete icon" width="25" height="25">
+
+        <li ondblclick="setComplited(${i})"
+        class=" list-group-item d-flex  align-items-ceter justify-content-between  ${element.completed == true ? 'completed' : ''}">
+
+        <div class="d-flex align-items-center gap-1">
+              <input type="checkbox" name="checkbox[]" id="checkbox1">
+        <label for="checkbox1"></lable>
+          ${element.text}
         </div>
-    </li>
+          
+        <div id="todo-icon">
+            <span class="opacity-25  ">${element.time}</span>
+            <img class="ms-2" onclick="editTodo(${i})" src="./img/edit.svg" alt="edit icon" width="25" height="25"
+              data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <img src="./img/delete.svg" onclick="deleteTodo(${i})" alt="delete icon" width="25" height="25">
+          </div>
+      </li>
+    
     `
     });
 
@@ -127,7 +137,7 @@ function editTodo(id) {
 
 formEdit.addEventListener('submit', (e) => {
     e.preventDefault();
-    
+
     if (e.target[0].value.trim()) {
         todos[editId].text = e.target[0].value;
         setTodos()
