@@ -23,14 +23,14 @@ function setTodos() {
 }
 // show todos 
 function showTodos() {
-    listGroupTodo.textContent = "";
+    listGroupTodo.innerHTML = "";
     let todo = JSON.parse(localStorage.getItem('list'));
     todo.forEach((element, i) => {
         listGroupTodo.innerHTML += `
 
         <li ondblclick="setComplited(${i})"
         class=" list-group-item d-flex  align-items-ceter justify-content-between  ${element.completed == true ? 'completed' : ''}">
-          
+          <p class =" fs-4">${element.text} </p>
         <div id="todo-icon">
             <span class="opacity-25  ">${element.time}</span>
             <img class="ms-2" onclick="editTodo(${i})" src="./img/edit.svg" alt="edit icon" width="25" height="25"
