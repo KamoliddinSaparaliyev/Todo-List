@@ -30,12 +30,6 @@ function showTodos() {
 
         <li ondblclick="setComplited(${i})"
         class=" list-group-item d-flex  align-items-ceter justify-content-between  ${element.completed == true ? 'completed' : ''}">
-
-        <div class="d-flex align-items-center gap-1">
-              <input type="checkbox" name="checkbox[]" id="checkbox1">
-        <label for="checkbox1"></lable>
-          ${element.text}
-        </div>
           
         <div id="todo-icon">
             <span class="opacity-25  ">${element.time}</span>
